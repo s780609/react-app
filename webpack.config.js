@@ -3,6 +3,7 @@ const path = require('path');
 
 // import Plugin
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     //這個webpack打包的對象，這裡面加上剛剛建立的index.js
@@ -10,12 +11,12 @@ module.exports = {
     entry: [
         './src/index.js',
     ],
-    resolve: {
-        modules: [path.join(__dirname, 'src'), 'node_modules'],
-        alias: {
-            react: path.join(__dirname, 'node_modules', 'react'),
-        },
-    },
+    // resolve: {
+    //     modules: [path.join(__dirname, 'src'), 'node_modules'],
+    //     alias: {
+    //         react: path.join(__dirname, 'node_modules', 'react'),
+    //     },
+    // },
     output: {
         //這裡是打包後的檔案名稱
         filename: 'bundle.js',
@@ -45,5 +46,7 @@ module.exports = {
         port: 9000,
         //static: "./dist",
     },
-    plugins: [new HtmlWebPackPlugin({ template: './src/index.html' })],
+    plugins: [new HtmlWebPackPlugin({ template: './src/index.html' }),
+    //new CopyPlugin({ patterns: [{ from: "src", to: "dist" },], }),
+    ],
 };
