@@ -1,13 +1,21 @@
 {
-  "name": "y",
+  "name": "archer-react-app",
   "version": "1.0.0",
-  "description": "with out cra",
+  "description": "react-app with out cra command",
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode=development --open --hot",
     "build": "webpack --mode=production",
     "test": "jest"
   },
+  "keywords": [
+    "react",
+    "reactjs",
+    "webpack",
+    "babel",
+    "jest",
+    "@testing-library"
+  ],
   "author": "hsutinghuan",
   "license": "ISC",
   "dependencies": {
