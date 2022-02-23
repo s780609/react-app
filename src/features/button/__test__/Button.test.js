@@ -4,6 +4,13 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+// pass store to children component
+import { Provider } from 'react-redux';
+
+// using api hooks to connect redux-store
+import store from "../../../app/store";
+
 //import renderer, { act } from 'react-test-renderer';
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
@@ -14,7 +21,9 @@ import Button from '../Button.js';
 describe("button test", () => {
     test('Button handleClick prop can be revoke', () => {
         const mockFunc = jest.fn();
-        render(<Button handleClick={mockFunc}></Button>);
+        render(<Provider store={store}>
+            <Button handleClick={mockFunc}></Button>
+        </Provider>);
         const buttons = screen.getAllByTestId("button");
         const button = buttons[0];
 
@@ -26,7 +35,9 @@ describe("button test", () => {
     });
 
     test("test click function and text changing runs correctly", () => {
-        render(<Button></Button>);
+        render(<Provider store={store}>
+            <Button></Button>
+        </Provider>);
         const buttons = screen.getAllByTestId("button");
         const button = buttons[0];
 

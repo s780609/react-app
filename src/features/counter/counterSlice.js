@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const counterSlice = createSlice({
     name: "counter",
@@ -21,6 +21,21 @@ export const counterSlice = createSlice({
         },
     }
 });
+
+function fetchCount(amount = 1) {
+    return new Promise((resolve) =>
+        setTimeout(() => resolve({ value: amount }), 500)
+    );
+}
+
+export const incrementAsync = createAsyncThunk(
+    'counter/fetchCount',
+    async (amount = 1) => {
+        const response = await fetchCount(amount);
+        // The value we return becomes the `fulfilled` action payload
+        return response.value;
+    }
+);
 
 // Action creators are generated for each case reducer function
 export const { increment, decrement, incrementByAmount } = counterSlice.actions

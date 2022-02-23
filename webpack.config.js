@@ -47,6 +47,6 @@ module.exports = {
         //static: "./dist",
     },
     plugins: [new HtmlWebPackPlugin({ template: './src/index.html' }),
-    //new CopyPlugin({ patterns: [{ from: "src", to: "dist" },], }),
+        //new CopyPlugin({ patterns: [{ from: "src", to: "dist" },], }),
     ],
 };
